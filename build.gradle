@@ -1,0 +1,29 @@
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
+repositories {
+    jcenter()
+}
+
+group 'info.mathieubarcikowski'
+version '1.0.0-SNAPSHOT'
+
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+archivesBaseName = 'mow-it-now'
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+// TODO synchronize .depends with gradle dependencies
+
+dependencies {
+    testCompile 'junit:junit:4.12',
+            'org.assertj:assertj-core:2.0.0'
+}
+
