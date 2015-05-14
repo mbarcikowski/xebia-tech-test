@@ -1,16 +1,21 @@
 package info.mathieubarcikowski.mowitnow;
 
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Queue;
+
 public class Mow
 {
     private final Orientation orientation;
 
-    private final int xCoordinate;
-    private final int yCoordinate;
+    private final Position position;
 
-    public Mow(Orientation anOrientation, int aXCoordinate, int aYCoordinate)
+    private final Queue<Command> program;
+
+    public Mow(Orientation initialOrientation, Position initialPosition, Collection<Command> aCommands)
     {
-        orientation = anOrientation;
-        xCoordinate = aXCoordinate;
-        yCoordinate = aYCoordinate;
+        orientation = initialOrientation;
+        position = initialPosition;
+        program =  new ArrayDeque(aCommands);
     }
 }

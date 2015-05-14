@@ -2,20 +2,22 @@ package info.mathieubarcikowski.mowitnow;
 
 public class Lawn
 {
-    private final int xCoordinate;
-    private final int yCoordinate;
+    private final Position southWestPosition;
+    private final Position northEastPosition;
 
-    public Lawn(int aXCoordinate, int aYCoordinate)
+    public Lawn(Position aSouthWestPosition, Position aNorthEastPosition)
     {
-        xCoordinate = aXCoordinate;
-        yCoordinate = aYCoordinate;
+        this.southWestPosition = aSouthWestPosition;
+        this.northEastPosition = aNorthEastPosition;
     }
 
-    public boolean includes(int aXCoordinate, int aYCoordinate)
+    public boolean includes(Position aPosition)
     {
-        return 0 <= aXCoordinate
-                   && aXCoordinate <= xCoordinate
-                   && 0 <= aYCoordinate
-                   && aYCoordinate <= yCoordinate;
+        final int x = aPosition.getX();
+        final int y = aPosition.getY();
+        return southWestPosition.getX() <= x
+                && x <= northEastPosition.getX()
+                && southWestPosition.getY() <= y
+                && y <= northEastPosition.getY();
     }
 }

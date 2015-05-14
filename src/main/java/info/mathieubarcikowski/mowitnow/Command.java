@@ -1,8 +1,6 @@
 package info.mathieubarcikowski.mowitnow;
 
-public enum Command
+public interface Command
 {
-    D,
-    G,
-    A;
+    void executeOn(Mow aMow, Environment aEnvironment);
 }
