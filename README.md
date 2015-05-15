@@ -13,4 +13,4 @@ Xebia technical test
 ## Where is the code ?
 
 - Main code : src/main/java/
-- Test code : src/main/test/
+- Test code : src/test/java/
