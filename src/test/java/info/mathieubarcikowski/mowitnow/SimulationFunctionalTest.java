@@ -1,42 +1,40 @@
 package info.mathieubarcikowski.mowitnow;
 
-import org.junit.Test;
-
-import java.util.Collection;
-
 import static info.mathieubarcikowski.mowitnow.Commands.parseCommands;
 import static info.mathieubarcikowski.mowitnow.Lawn.parseLawn;
 import static info.mathieubarcikowski.mowitnow.Pose.parsePose;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SimulationFunctionalTest
-{
+import org.junit.Test;
 
-    @Test
-    public void testRun() throws Exception
-    {
-        //given
-        Environment environment = new Environment(
-                parseLawn("5 5"),
-                new Mow(parsePose("1 2 N"),
-                        parseCommands("GAGAGAGAA")
-                ),
-                new Mow(parsePose("3 3 E"),
-                        parseCommands("AADAADADDA")
-                )
-        );
+import java.util.Collection;
 
-        Simulation simulation = new Simulation(environment);
+public class SimulationFunctionalTest {
 
-        //when
-        final Collection<Pose> result = simulation.call();
+  @Test
+  public void testRun() throws Exception {
+    //given
+    Environment environment = new Environment(
+      parseLawn("5 5"),
+      new Mow(parsePose("1 2 N"),
+        parseCommands("GAGAGAGAA")
+      ),
+      new Mow(parsePose("3 3 E"),
+        parseCommands("AADAADADDA")
+      )
+    );
 
-        //then
-        assertThat(result)
-                .hasSize(2)
-                .containsExactly(
-                        parsePose("1 3 N"),
-                        parsePose("5 1 E")
-                );
-    }
+    Simulation simulation = new Simulation(environment);
+
+    //when
+    final Collection<Pose> result = simulation.call();
+
+    //then
+    assertThat(result)
+      .hasSize(2)
+      .containsExactly(
+        parsePose("1 3 N"),
+        parsePose("5 1 E")
+      );
+  }
 }

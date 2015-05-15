@@ -1,5 +1,5 @@
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = '2.4'
 }
 
 repositories {
@@ -9,10 +9,17 @@ repositories {
 group 'info.mathieubarcikowski'
 version '1.0.0-SNAPSHOT'
 
+ext.configDir = new File(rootDir, 'config')
 
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: "jacoco"
+
+
+apply from: "$rootDir/gradle/jacoco.gradle"
+apply from: "$rootDir/gradle/checkstyle.gradle"
+apply from: "$rootDir/gradle/pmd.gradle"
+apply from: "$rootDir/gradle/findbugs.gradle"
+apply from: "$rootDir/gradle/jdepend.gradle"
 
 archivesBaseName = 'mow-it-now'
 

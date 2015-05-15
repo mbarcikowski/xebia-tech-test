@@ -1,19 +1,17 @@
 package info.mathieubarcikowski.mowitnow;
 
-import org.junit.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.Test;
 
-public class LocationsTest
-{
 
-    @Test
-    public void testORIGIN() throws Exception
-    {
-        //then
-        assertThat(Locations.ORIGIN.getX()).isEqualTo(0);
-        assertThat(Locations.ORIGIN.getY()).isEqualTo(0);
+public class LocationsTest {
 
-    }
+  @Test
+  public void testORIGIN() throws Exception {
+    //then
+    assertThat(Locations.ORIGIN.getCoordinateX()).isEqualTo(0);
+    assertThat(Locations.ORIGIN.getCoordinateY()).isEqualTo(0);
+
+  }
 }

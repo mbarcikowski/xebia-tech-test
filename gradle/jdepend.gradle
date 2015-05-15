@@ -1,0 +1,20 @@
+import info.mathieubarcikowski.mowitnow.XsltReport
+
+apply plugin: 'jdepend'
+
+def configDir = new File(rootDir, 'config')
+
+ext.jdependConfigDir = "$configDir/jdepend"
+
+jdepend {
+    toolVersion = '2.9.1'
+    ignoreFailures = true
+}
+
+tasks.withType(JDepend) {
+    reports {
+        text.enabled = true
+        xml.enabled = false
+    }
+}
+

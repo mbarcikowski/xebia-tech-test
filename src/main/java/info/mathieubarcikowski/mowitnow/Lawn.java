@@ -1,36 +1,46 @@
 package info.mathieubarcikowski.mowitnow;
 
-import java.util.Scanner;
-
 import static info.mathieubarcikowski.mowitnow.Locations.ORIGIN;
 
-public class Lawn
-{
-    private final Location southWestLocation;
-    private final Location northEastLocation;
+import java.util.Scanner;
 
-    public Lawn(Location aNorthEastLocation)
-    {
-        southWestLocation = ORIGIN;
-        northEastLocation = aNorthEastLocation;
-    }
+public class Lawn {
+  private final Location southWestLocation;
+  private final Location northEastLocation;
 
-    public boolean includes(Location aLocation)
-    {
-        final int x = aLocation.getX();
-        final int y = aLocation.getY();
-        return southWestLocation.getX() <= x
-                && x <= northEastLocation.getX()
-                && southWestLocation.getY() <= y
-                && y <= northEastLocation.getY();
-    }
+  public Lawn(Location lawnNorthEastLocation) {
+    southWestLocation = ORIGIN;
+    northEastLocation = lawnNorthEastLocation;
+  }
 
-    public static Lawn parseLawn(String input)
-    {
-        Scanner s = new Scanner(input).useDelimiter(" ");
-        final int x = s.nextInt();
-        final int y = s.nextInt();
-        s.close();
-        return new Lawn(new Location(x, y));
-    }
+  /**
+   * Parse an input string in order to retrieve a lawn.
+   * Input string is composed by "X Y", X representing x coordinate,
+   * Y representing y coordinate.
+   *
+   * @param input string to be parsed.
+   * @return a lawn.
+   */
+  public static Lawn parseLawn(String input) {
+    Scanner scanner = new Scanner(input).useDelimiter(" ");
+    final int x = scanner.nextInt();
+    final int y = scanner.nextInt();
+    scanner.close();
+    return new Lawn(new Location(x, y));
+  }
+
+  /**
+   * Verify if a location is included in lawn.
+   *
+   * @param location location to verify.
+   * @return true if location is included in lawn.
+   */
+  public boolean includes(Location location) {
+    final int x = location.getCoordinateX();
+    final int y = location.getCoordinateY();
+    return southWestLocation.getCoordinateX() <= x
+      && x <= northEastLocation.getCoordinateX()
+      && southWestLocation.getCoordinateY() <= y
+      && y <= northEastLocation.getCoordinateY();
+  }
 }
