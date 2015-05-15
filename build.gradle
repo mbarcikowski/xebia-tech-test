@@ -12,6 +12,7 @@ version '1.0.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: "jacoco"
 
 archivesBaseName = 'mow-it-now'
 
@@ -20,9 +21,9 @@ compileJava {
     targetCompatibility = 1.8
 }
 
-// TODO synchronize .depends with gradle dependencies
-
 dependencies {
+    compile 'com.google.guava:guava:18.0'
+
     testCompile 'junit:junit:4.12',
             'org.assertj:assertj-core:2.0.0'
 }

@@ -1,23 +1,36 @@
 package info.mathieubarcikowski.mowitnow;
 
+import java.util.Scanner;
+
+import static info.mathieubarcikowski.mowitnow.Locations.ORIGIN;
+
 public class Lawn
 {
-    private final Position southWestPosition;
-    private final Position northEastPosition;
+    private final Location southWestLocation;
+    private final Location northEastLocation;
 
-    public Lawn(Position aSouthWestPosition, Position aNorthEastPosition)
+    public Lawn(Location aNorthEastLocation)
     {
-        this.southWestPosition = aSouthWestPosition;
-        this.northEastPosition = aNorthEastPosition;
+        southWestLocation = ORIGIN;
+        northEastLocation = aNorthEastLocation;
     }
 
-    public boolean includes(Position aPosition)
+    public boolean includes(Location aLocation)
     {
-        final int x = aPosition.getX();
-        final int y = aPosition.getY();
-        return southWestPosition.getX() <= x
-                && x <= northEastPosition.getX()
-                && southWestPosition.getY() <= y
-                && y <= northEastPosition.getY();
+        final int x = aLocation.getX();
+        final int y = aLocation.getY();
+        return southWestLocation.getX() <= x
+                && x <= northEastLocation.getX()
+                && southWestLocation.getY() <= y
+                && y <= northEastLocation.getY();
+    }
+
+    public static Lawn parseLawn(String input)
+    {
+        Scanner s = new Scanner(input).useDelimiter(" ");
+        final int x = s.nextInt();
+        final int y = s.nextInt();
+        s.close();
+        return new Lawn(new Location(x, y));
     }
 }
